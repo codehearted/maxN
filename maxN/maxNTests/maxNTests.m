@@ -34,7 +34,7 @@
     
     //    NSLog(@"Top %d of array:%@ = %@",5,testArray1, [testArray1 maxN:5]);
 
-    XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1], @"Got (%@), wanted (%@)");
+    XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1], @"Max5: Got (%@), wanted (%@)", resultsArray1, expectedResultsArray1);
 }
 
 
@@ -47,8 +47,8 @@
     NSArray *expectedResultsArray2 = @[@11, @0.2, @0.1, @-108000];
     NSArray *resultsArray2 = [testArray2 max4];
     
-    XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1], @"Pass");
-    XCTAssert([resultsArray2 isEqualToArray:expectedResultsArray2], @"Pass");
+    XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1],  @"Max4 Test 1: Got (%@), wanted (%@)", resultsArray1, expectedResultsArray1);
+    XCTAssert([resultsArray2 isEqualToArray:expectedResultsArray2],  @"Max4 Test 2: Got (%@), wanted (%@)", resultsArray2, expectedResultsArray2);
 }
 
 - (void)testMax4shortened {
@@ -56,7 +56,7 @@
     NSArray *expectedResultsArray1 = @[@11, @0.2, @0.1];
     NSArray *resultsArray1 = [testArray1 max4];
     
-    XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1], @"Pass");
+    XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1],  @"Max4shortened: Got (%@), wanted (%@)", resultsArray1, expectedResultsArray1);
 }
 
 @end

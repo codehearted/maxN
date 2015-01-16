@@ -9,22 +9,38 @@
 #import "NSArray+MaxN.h"
 
 @implementation NSArray (MaxN)
+
+// Note: Because there is only one loop in the method below that scales according the the size of the array,
+// it is O(n). To be clear, in O notation the n in O(n) represents the size of the array (self.count),
+// in the method the parameter n is the number of items to return and is constant (at 4) for what I was asked to make.
+
+// Note: I'm commenting somewhat more than I typically would, since this is a test, and I'm explaining an algorithm.
+
 -(NSArray*)maxN:(NSInteger)n
 {
-    NSAssert(self.count >= n, @"Arrays smaller than N not yet supported");
+
+    if (self.count < n) { n = self.count; }
+
+    NSAssert(self.count >= n, @"Arrays smaller than N should have changed N by now");
 
     NSMutableArray *topN = [NSMutableArray array];
 
+    // Initialize the topN array with very small numbers
     for (int i = 0; i < n; i++) {
-        [topN addObject:@-1.0e20];
+        //        [topN addObject:@-1.0e20];
+        [topN addObject:@-DBL_MAX];
     }
     
     for (NSNumber *num in self) { // for each number
         for (NSInteger i = 0; i < n; i++) { // then for each topN slot
-            if ([num doubleValue] > [(NSNumber*)topN[i] doubleValue]) { //
+            // if this number is bigger than the number occupying that slot,
+            if ([num doubleValue] > [(NSNumber*)topN[i] doubleValue]) {
+                // then, looping backwards to avoid copying the same value down the whole list,
                 for (NSInteger ii = n-1; ii >= i+1; ii--) {
+                    // nudge down the previous slot occupant (and the rest of the list) down a slot
                         topN[ii] = topN[ii-1];
                 }
+                // then set the slot to the new number
                 topN[i] = num;
                 break;
             }
