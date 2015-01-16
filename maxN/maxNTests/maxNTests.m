@@ -67,7 +67,7 @@
 - (void)testMax3LargeArray {
     NSMutableArray *testArray1 = [NSMutableArray array];
     for (int i = 0; i < 25000; i++) {
-        [testArray1 addObject:[NSNumber numberWithDouble:(arc4random()%10000000)*.00001]];
+        [testArray1 addObject:[NSNumber numberWithDouble:(arc4random()%10000000)*.00001]]; // Adds numbers from 0 to 100.0000
     }
     [testArray1 addObjectsFromArray:@[@252, @500, @19214.34, @23]];
     NSArray *expectedResultsArray1 = @[@19214.34, @500, @252];
