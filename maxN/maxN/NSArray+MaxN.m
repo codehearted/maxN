@@ -32,6 +32,7 @@
     }
     
     for (NSNumber *num in self) { // for each number
+        NSAssert([num isKindOfClass:[NSNumber class]], @"Tried to get maxN of array containing a %@, can only get maxN of NSNumbers",[[num class] description]);
         for (NSInteger i = 0; i < n; i++) { // then for each topN slot
             // if this number is bigger than the number occupying that slot,
             if ([num doubleValue] > [(NSNumber*)topN[i] doubleValue]) {
