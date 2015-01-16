@@ -57,7 +57,7 @@
 
 - (void)testMax6WithDups {
     NSArray *testArray1 = @[@1.0, @-5, @-5, @-40, @5.5, @-6.5, @-128, @-258];
-    NSArray *expectedResultsArray1 = @[@5.5, @1.0, @-5, @-5, @-6.5];
+    NSArray *expectedResultsArray1 = @[@5.5, @1.0, @-5, @-5, @-6.5, @-40];
     NSArray *resultsArray1 = [testArray1 maxN:6];
     
     XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1], @"Max6WithDups: Got (%@), wanted (%@)", resultsArray1, expectedResultsArray1);
