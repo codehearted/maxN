@@ -12,9 +12,9 @@
 
 // Note: Because there is only one loop in the method below that scales according the the size of the array,
 // it is O(n). To be clear, in O notation the n in O(n) represents the size of the array (self.count),
-// in the method the parameter n is the number of items to return and is constant (at 4).
+// in the method the parameter n is the number of items to return and is not dependent on the size of the array.
 
-// Note: I'm commenting somewhat more than I typically would, since this is a test, and I'm explaining an algorithm.
+// Note: I'm commenting somewhat more than I typically would, since I'm explaining an algorithm.
 
 -(NSArray*)maxN:(NSInteger)n
 {
