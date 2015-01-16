@@ -18,11 +18,9 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
@@ -32,8 +30,6 @@
     NSArray *expectedResultsArray1 = @[@3.41e23, @10e8, @200, @30.3, @25];
     NSArray *resultsArray1 = [testArray1 maxN:5];
     
-    //    NSLog(@"Top %d of array:%@ = %@",5,testArray1, [testArray1 maxN:5]);
-
     XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1], @"Max5: Got (%@), wanted (%@)", resultsArray1, expectedResultsArray1);
 }
 
@@ -58,5 +54,28 @@
     
     XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1],  @"Max4shortened: Got (%@), wanted (%@)", resultsArray1, expectedResultsArray1);
 }
+
+- (void)testMax6WithDups {
+    NSArray *testArray1 = @[@1.0, @-5, @-5, @-40, @5.5, @-6.5, @-128, @-258];
+    NSArray *expectedResultsArray1 = @[@5.5, @1.0, @-5, @-5, @-6.5];
+    NSArray *resultsArray1 = [testArray1 maxN:6];
+    
+    XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1], @"Max6WithDups: Got (%@), wanted (%@)", resultsArray1, expectedResultsArray1);
+}
+
+
+- (void)testMax3LargeArray {
+    NSMutableArray *testArray1 = [NSMutableArray array];
+    for (int i = 0; i < 25000; i++) {
+        [testArray1 addObject:[NSNumber numberWithDouble:(arc4random()%10000000)*.00001]];
+    }
+    [testArray1 addObjectsFromArray:@[@252, @500, @19214.34, @23]];
+    NSArray *expectedResultsArray1 = @[@19214.34, @500, @252];
+    NSArray *resultsArray1 = [testArray1 maxN:3];
+    
+    XCTAssert([resultsArray1 isEqualToArray:expectedResultsArray1], @"Max3LargeArray: Got (%@), wanted (%@)", resultsArray1, expectedResultsArray1);
+}
+
+
 
 @end
